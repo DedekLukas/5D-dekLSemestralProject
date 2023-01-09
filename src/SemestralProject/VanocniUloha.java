@@ -1,4 +1,3 @@
-
 package SemestralProject;
 
 import java.util.Scanner;
@@ -13,7 +12,7 @@ public class VanocniUloha {
     static int face;
     static boolean end;
 
-    public static void main(String[] args) {
+    public static void run() {
         String name;
 
         System.out.println("►►►►   Vítej ve stavebnictví sněhuláků!    ◄◄◄◄");
