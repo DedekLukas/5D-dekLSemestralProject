@@ -1,4 +1,3 @@
-
 package SemestralProject;
 
 import java.util.Scanner;
@@ -11,7 +10,7 @@ import java.util.Scanner;
 
 public class SemestralniUloha {
 
-    public static void main(String[] args) {
+    public static void Semestral() {
         Scanner sc = new Scanner(System.in);
         int pocet;
         int[] posloupnost;
@@ -58,13 +57,12 @@ public class SemestralniUloha {
                 if (posloupnost.length == 1) { //prvky nejde porovnávat
                     posloupne = true;
                 } else {
+                    posloupne = true;
                     for (int i = 0; i < posloupnost.length - 1; i++) { //Je zadaná posloupnost vzestupná?
                         if (posloupnost[i] > posloupnost[i + 1]) {
                             posloupne = false;
                             break;
-                        } else {
-                            posloupne = true;
-                        }
+                        } 
                     }
                 }
                 System.out.print((posloupne ? "" : "Toto neni vzestupne setridena posloupnost!" + "\n" + "\n"));
@@ -118,9 +116,10 @@ public class SemestralniUloha {
     }
 
     /**
-     * metoda pro zjištění indexu prvku, na který, když přidáme zadané číslo, tak řada zůstane vzestupná
-     * parametry: vzestupně setříděné pole, číslo
-     * vrací index původního pole, na který když zadané číslo přidáme, tak je řada stále vzestupná
+     * metoda pro zjištění indexu prvku, na který, když přidáme zadané číslo, tak řada zůstane vzestupná     
+     * @param seřazenePole - pole, do kterého chceme přidat číslo
+     * @param number - číslo, které chceme přidat
+     * @return - vrací index původního pole, na který když zadané číslo přidáme, tak je řada stále vzestupná
      */
     private static int binarSearchPosition(int[] seřazenePole, int number) {
         int max = seřazenePole.length - 1;
@@ -151,23 +150,23 @@ public class SemestralniUloha {
     pole {1,4,5,6}, číslo 7, očekávaný index 3 - vysledek 3
      */
     
-    
     /**
      * metoda pro přidání prvku do pole
      * parametry: pole, číslo a pozice (index), na kterou chceme dané číslo přidat
-     * vrací pole (rozměr pole = původní + 1)
+     * @param pole - pole, do kterého chceme přidat číslo
+     * @param number - číslo, které se má přidat do pole
+     * @param pozition - pozice, na kterou chceme číslo přidat
+     * @return - vrací pole (rozměr pole = původní rozměr + 1)  
      */
     private static int[] pridaniPrvkuDoPole(int[] pole, int number, int pozition) {
         int[] temp = pole;
         pole = new int[pole.length + 1];  //přidání prvku do pole zvětšené o 1 na zjištěnou pozici
-        for (int i = 0; i < pole.length; i++) {
-            if (i < pozition) {
+        for (int i = 0; i < pozition; i++) {
                 pole[i] = temp[i];
-            } else if (i == pozition) {
-                pole[i] = number;
-            } else {
-                pole[i] = temp[i - 1];
-            }
+        }
+        pole[pozition] = number;
+        for (int i = pozition+1; i < pole.length; i++) {
+                pole[i] = temp[i-1];
         }
         return pole;
     }
